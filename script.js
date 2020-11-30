@@ -1,6 +1,15 @@
 let playerScore = 0;
 let compScore = 0;
 
+const container = document.querySelector("#container");
+
+const scoreboard = document.createElement('div');
+scoreboard.textContent = "===============" + "\r\n" +
+                         "Computer: " + compScore + "\r\n" +
+                         "Player: " + playerScore + "\r\n" +
+                         "===============";
+scoreboard.style.cssText = "white-space: pre-line";
+container.appendChild(scoreboard);
 
 function computerPlay(){
     const possibleOpt = ["rock", "paper", "scissors"];
@@ -49,17 +58,17 @@ function playRound(playerSelection, computerSelection){
         }
 
     if(winner === "Player" || winner === "Computer"){
-    alert (winner + " has won this round!" + "\n" + 
-            "===============" + "\n" +
-            "= Computer: " + compScore + "     =" + "\n" +
-            "= Player: " + playerScore + "             =" + "\n" +
-            "===============");
-    }else if(winner == "draw"){
-        alert ("It was a tie!" + "\n" + 
-            "===============" + "\n" +
-            "= Computer: " + compScore + "     =" + "\n" +
-            "= Player: " + playerScore + "             =" + "\n" +
-            "===============");
+        scoreboard.textContent = "===============" + "\r\n" +
+                                 winner + " has won this round!" + "\r\n" +
+                                 "Computer: " + compScore + "\r\n" +
+                                 "Player: " + playerScore + "\r\n" +
+                                 "===============";
+    }else if(winner === "draw"){
+        scoreboard.textContent = "===============" + "\r\n" +
+                                 "It was a tie!" + "\r\n" +
+                                 "Computer: " + compScore + "\r\n" +
+                                 "Player: " + playerScore + "\r\n" +
+                                 "===============";
     }
     return winner;
 }
