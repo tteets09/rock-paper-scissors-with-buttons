@@ -4,10 +4,10 @@ let compScore = 0;
 const container = document.querySelector("#container");
 
 const scoreboard = document.createElement('div');
-scoreboard.textContent = "===============" + "\r\n" +
-                         "Computer: " + compScore + "\r\n" +
-                         "Player: " + playerScore + "\r\n" +
-                         "===============";
+scoreboard.textContent = `===============
+                         Computer: ${compScore}
+                         Player: ${playerScore}
+                         ===============`;
 scoreboard.style.cssText = "white-space: pre-line";
 container.appendChild(scoreboard);
 
@@ -58,20 +58,35 @@ function playRound(playerSelection, computerSelection){
         }
 
     if(winner === "Player" || winner === "Computer"){
-        scoreboard.textContent = "===============" + "\r\n" +
-                                 winner + " has won this round!" + "\r\n" +
-                                 "Computer: " + compScore + "\r\n" +
-                                 "Player: " + playerScore + "\r\n" +
-                                 "===============";
+        scoreboard.textContent = `===============
+                                 ${winner} has won this round!
+                                 Computer: ${compScore}
+                                 Player: ${playerScore}
+                                 ===============`;
     }else if(winner === "draw"){
-        scoreboard.textContent = "===============" + "\r\n" +
-                                 "It was a tie!" + "\r\n" +
-                                 "Computer: " + compScore + "\r\n" +
-                                 "Player: " + playerScore + "\r\n" +
-                                 "===============";
+        scoreboard.textContent = `===============
+                                 It was a tie!
+                                 Computer: ${compScore}
+                                 Player: ${playerScore}
+                                 ===============`;
+    }
+    
+    if (playerScore === 5){
+        scoreboard.textContent = `===============
+
+                                 Player has won the game!
+
+                                 ===============`;
+    }else if(compScore === 5){
+        scoreboard.textContent = `===============
+
+                                  Computer has won the game!
+
+                                  ===============`;
     }
     return winner;
 }
+
     const playerChoice = document.querySelectorAll('button');
 
     playerChoice.forEach((button) => {
@@ -81,3 +96,4 @@ function playRound(playerSelection, computerSelection){
             playRound(button.id, computerPlay());
         });
     });
+
