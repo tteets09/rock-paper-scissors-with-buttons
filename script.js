@@ -63,33 +63,12 @@ function playRound(playerSelection, computerSelection){
     }
     return winner;
 }
+    const playerChoice = document.querySelectorAll('button');
 
-function playerInput(){
-    answer = prompt("Enter: Rock, Paper, or Scissors");
-    answer = answer.toLowerCase();
-    console.log(answer);
-    return answer;
-}
-function game(){
-
-    for(var i = 0; i < 5; i++){
-        const playerSelection = playerInput();
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-
-        console.log("===============");
-        console.log("= Computer:" + compScore + "  =");
-        console.log("= Player:" + playerScore + "    =");
-        console.log("===============");
-    }
-
-    if(playerScore > compScore){
-        alert("Player Wins!");
-    }else if(playerScore < compScore){
-        alert("Computer Wins");
-    }else if(playerScore === compScore){
-        alert("Its a tie!")
-    }
-}
-
-game();
+    playerChoice.forEach((button) => {
+        
+        button.addEventListener('click', () =>{
+            console.log(button.id);
+            playRound(button.id, computerPlay());
+        });
+    });
